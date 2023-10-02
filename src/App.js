@@ -14,7 +14,7 @@ import VideoDetails from './components/VideoDetails';
       <div className="flex flex-col h-full">
         <Header/>
         <Routes>
-          <Route path='/' element={ <Feed/> }/>
+          <Route path='/' exact element={ <Feed/> }/>
           <Route path='/searchResult/:searchQuery' element={ <SearchResult/> }/>
           <Route path='/video/:id' element={ <VideoDetails/> }/>
         </Routes>
