@@ -2,9 +2,12 @@ import React, { useContext } from 'react'
 import { categories } from '../utils/constants'
 import LeftNavMenuItem from './LeftNavMenuItem'
 import { Context } from '../context/contextApi'
+import { useNavigate } from 'react-router-dom'
 
 const LeftNav = () => {
   const {selectedCategory,setSelectedCategory,mobileMenu}=useContext(Context);
+
+  const navigate=useNavigate();
 
   const clickHandler=(name,type)=>{
     switch(type){
@@ -25,12 +28,13 @@ const LeftNav = () => {
       <div className="flex px-5 flex-col">
         {categories.map((item)=>{
           return (
-            <React.Fragment>
+            <React.Fragment key={item.name}>
               <LeftNavMenuItem 
               text={item.type==="home"? "Home":item.name}
               icon={item.icon}
               action={()=>{
                 clickHandler(item.name,item.type);
+                navigate("/")
               }}
               className={`${selectedCategory===item.name?"bg-white/[0.15]":""}`}
               />
